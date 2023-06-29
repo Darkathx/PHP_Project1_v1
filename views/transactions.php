@@ -34,20 +34,37 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- YOUR CODE -->
+                <?php
+                    $count = count($infoArrays[0]);
+                    for($i = 0; $i < $count; $i++) {
+                        echo "<tr>";
+                        echo "<td>{$infoArrays[0][$i]}</td>";
+                        echo "<td>{$infoArrays[1][$i]}</td>";
+                        echo "<td>{$infoArrays[2][$i]}</td>";
+                        echo '<td>' . formatCurrency($infoArrays[3][$i]) . '</td>';
+                        echo "</tr>";
+                    }
+                ?>
             </tbody>
             <tfoot>
                 <tr>
                     <th colspan="3">Total Income:</th>
-                    <td><!-- YOUR CODE --></td>
+                    <td><?php echo "<p>\$$amtArray[0]</p>";?></td>
                 </tr>
                 <tr>
                     <th colspan="3">Total Expense:</th>
-                    <td><!-- YOUR CODE --></td>
+                    <td><?php echo "<p>-\$$amtArray[1]</p>";?></td>
                 </tr>
                 <tr>
                     <th colspan="3">Net Total:</th>
-                    <td><!-- YOUR CODE --></td>
+                    <td>
+                        <?php 
+                        if($amtArray[2] < 0) {
+                            echo "-\$$amtArray[2]";
+                        } else {
+                            echo "\$$amtArray[2]";
+                        }
+                    ?></td>
                 </tr>
             </tfoot>
         </table>
